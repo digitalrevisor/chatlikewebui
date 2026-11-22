@@ -1,0 +1,17 @@
+[Unit]
+Description=KI-chat (chatlikewebui) on OpenWebUI
+After=network.target
+
+[Service]
+Type=simple
+User=chatlikewebui
+WorkingDirectory=/opt/chatlikewebui
+EnvironmentFile=/opt/chatlikewebui/.env
+ExecStart=/usr/bin/node server/dist/src/main.js
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/chatlikewebui
+
+[Install]
+WantedBy=multi-user.target
